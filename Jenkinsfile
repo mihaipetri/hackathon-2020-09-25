@@ -18,7 +18,34 @@ pipeline {
 	stage("Publish Image") {
             agent {
     	    	kubernetes {
-      		    yamlFile 'kaniko-pod.yaml'
+      		    yaml """
+		    
+		    apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
+    imagePullPolicy: Always
+    command:
+    - /busybox/cat
+    tty: true
+    volumeMounts:
+      - name: kaniko-secret
+        mountPath: /secret
+    env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /secret/kaniko-secret.json
+  volumes:
+  - name: kaniko-secret
+    secret:
+      secretName: jenkins-int-samples-kaniko-secret
+
+		    
+		    
+		    """
 		}
 	    }
 	    environment {
