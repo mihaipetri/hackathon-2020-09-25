@@ -4,6 +4,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD [ "node", "app.js" ]
