@@ -20,7 +20,7 @@ pipeline {
     	    	kubernetes {
       		    cloud 'kubernetes'
       		    label 'node-pod'
-      		    yamlFile '~/node-pod.yaml'
+      		    yamlFile '/node-pod.yaml'
 			}
 	    }
 	    steps {
