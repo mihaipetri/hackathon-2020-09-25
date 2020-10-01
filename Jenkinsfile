@@ -15,18 +15,6 @@ pipeline {
     }
 
     stages {
-    stage("Build and test") {
-	    agent {
-    	    	kubernetes {
-      		    label 'jenkins-node'
-			}
-	    }
-	    steps {
-	    	container('node') {
-   	        	sh "npm install"
-			}
-	    }
-	}
 	stage("Publish Image") {
             agent {
     	    	kubernetes {
