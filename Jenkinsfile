@@ -15,6 +15,7 @@ pipeline {
     }
 
     stages {
+	stage("Publish Image") {
 		podTemplate(yaml: """
 apiVersion: v1
 kind: Pod
@@ -54,4 +55,5 @@ spec:
 	    }
 	}
     }
+	}
 }
