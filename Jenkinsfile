@@ -18,9 +18,7 @@ pipeline {
     stage("Build and test") {
 	    agent {
     	    	kubernetes {
-      		    cloud 'kubernetes'
-      		    label 'node-pod'
-      		    yamlFile '/node-pod.yaml'
+      		    label 'jenkins-node'
 			}
 	    }
 	    steps {
