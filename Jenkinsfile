@@ -15,20 +15,6 @@ pipeline {
     }
 
     stages {
-        stage("Build and test") {
-	    agent {
-    	    	kubernetes {
-      		    cloud 'kubernetes'
-      		    label 'node-pod'
-      		    yamlFile 'node-pod.yaml'
-			}
-	    }
-	    steps {
-	    	container('node') {
-   	        	sh "npm install"
-			}
-	    }
-	}
 	stage("Publish Image") {
             agent {
     	    	kubernetes {
