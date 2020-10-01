@@ -18,7 +18,9 @@ pipeline {
 	stage("Publish Image") {
             agent {
     	    	kubernetes {
-      		    yaml """
+		    cloud 'kubernetes'
+      		    label 'kaniko-pod'
+      		    yaml '''
 		    
 		    apiVersion: v1
 kind: Pod
@@ -45,7 +47,7 @@ spec:
 
 		    
 		    
-		    """
+		'''
 		}
 	    }
 	    environment {
