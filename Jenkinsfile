@@ -18,8 +18,6 @@ pipeline {
 	stage("Publish Image") {
             agent {
     	    	kubernetes {
-      		    cloud 'kubernetes'
-      		    label 'kaniko-pod'
       		    yamlFile 'kaniko-pod.yaml'
 		}
 	    }
