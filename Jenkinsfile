@@ -11,7 +11,6 @@ pipeline {
         BUILD_CONTEXT = "build-context-${BUILD_ID}.tar.gz"
         APP_NAME = "app-hackathon-demo"
         GCR_IMAGE = "gcr.io/${PROJECT_ID}/${APP_NAME}:${BUILD_ID}"
-        APP_JAR = "${APP_NAME}1234.jar"
     }
 
     stages {
@@ -56,6 +55,9 @@ pipeline {
 		    yamlFile 'gke-deploy-pod.yaml'
 		}
             }
+	    environment {
+                CLOUD = "Google Cloud Platform"
+      	    }
 	    steps{
 		container('gke-deploy') {
 		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g manifest.yaml"
@@ -78,6 +80,9 @@ pipeline {
 		    yamlFile 'gke-deploy-pod.yaml'
 		}
             }
+	    environment {
+                CLOUD = "AWS"
+      	    }
 	    steps{
 		container('gke-deploy') {
 		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g manifest.yaml"
