@@ -43,7 +43,7 @@ pipeline {
 	    steps {
 				container(name: 'kaniko', shell: '/busybox/sh') {
 				sh '''#!/busybox/sh
-				/kaniko/executor --dockerfile=Dockerfile --destination="${GCR_IMAGE}"
+				/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --dockerfile=`pwd`/Dockerfile --context=`pwd` --destination="${GCR_IMAGE}"
 				'''
 			}
 	    }
