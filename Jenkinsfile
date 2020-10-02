@@ -63,17 +63,13 @@ pipeline {
 			}
         }
 	}
-        /**
-         * This stage simulates an SRE manual approval process. Should you want to incorporate
-         * this into your pipeline you can uncomment this stage.
-        stage('Wait for SRE Approval') {
+        stage('Wait for the Manager Approval') {
             steps{
                 timeout(time:12, unit:'HOURS') {
                     input message:'Approve deployment?'
                 }
             }
         }
-         **/
 	stage("Deploy to AWS K8s Cluster") {
             agent {
     	        kubernetes {
