@@ -15,13 +15,18 @@ spec:
 
     node(POD_LABEL) {
         stage('Integration Test') {
-            try {
-                container('maven') {
-                    sh 'mihai testing'
-                }
-            } catch (Exception e) {
-                throw e
-            }
+		agent {
+    	        kubernetes {
+      		    cloud 'kubernetes'
+      		    label 'gke-deploy'
+		    yamlFile 'gke-deploy-pod.yaml'
+			}
         }
+		steps {
+			container('maven') {
+				sh 'mihai testing'
+			}
+        }
+		}
     }
 }
