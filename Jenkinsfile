@@ -11,7 +11,7 @@ pipeline {
         BUILD_CONTEXT = "build-context-${BUILD_ID}.tar.gz"
         APP_NAME = "app-hackathon-demo"
         GCR_IMAGE = "gcr.io/${PROJECT_ID}/${APP_NAME}:${BUILD_ID}"
-        APP_JAR = "${APP_NAME}1234.jar"
+        APP_JAR = "${APP_NAME}.jar"
     }
 
     stages {
