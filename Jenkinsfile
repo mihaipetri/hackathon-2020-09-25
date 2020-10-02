@@ -4,6 +4,7 @@ kind: Pod
 metadata:
   labels:
     some-label: some-label-value
+	maven-pod: maven-pod
 spec:
   containers:
   - name: maven
@@ -18,8 +19,7 @@ spec:
 		agent {
     	        kubernetes {
       		    cloud 'kubernetes'
-      		    label 'gke-deploy'
-		    yamlFile 'gke-deploy-pod.yaml'
+      		    label 'maven-pod'
 			}
         }
 		steps {
