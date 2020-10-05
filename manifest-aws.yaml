@@ -18,6 +18,6 @@ spec:
         image: IMAGE
         ports:
         - containerPort: 80
-		env:
-		- name: CLOUD
-		  value: AWS
+        env:
+        - name: CLOUD
+          value: AWS
