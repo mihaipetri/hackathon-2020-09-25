@@ -16,8 +16,8 @@ spec:
       containers:
       - name: app-hackathon-demo
         image: IMAGE
-        ports:
-        - containerPort: 80
         env:
         - name: CLOUD
-          value: 'Google Cloud Platform'
+          value: "Google Cloud Platform"
+        ports:
+        - containerPort: 80

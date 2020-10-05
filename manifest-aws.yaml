@@ -16,8 +16,8 @@ spec:
       containers:
       - name: app-hackathon-demo
         image: IMAGE
-        ports:
-        - containerPort: 80
         env:
         - name: CLOUD
-          value: AWS
+          value: "AWS"
+        ports:
+        - containerPort: 80
