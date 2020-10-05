@@ -80,6 +80,9 @@ pipeline {
 		    yamlFile 'gke-deploy-pod.yaml'
 		}
             }
+	    environment {
+                CLOUD = "AWS"
+      	    }			
 	    steps{
 		container('gke-deploy') {
 		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g manifest-aws.yaml"
