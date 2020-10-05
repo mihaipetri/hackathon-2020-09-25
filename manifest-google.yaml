@@ -1,0 +1,23 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-hackathon-demo
+spec:
+  selector:
+    matchLabels:
+      app: app-hackathon-demo
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: app-hackathon-demo
+    spec:
+      containers:
+      - name: app-hackathon-demo
+        image: IMAGE
+        ports:
+        - containerPort: 80
+		env:
+		- name: CLOUD
+		  value: Google Cloud Platform

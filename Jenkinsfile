@@ -60,8 +60,8 @@ pipeline {
       	    }
 	    steps{
 		container('gke-deploy') {
-		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g manifest.yaml"
-                    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.STAGING_CLUSTER, location: env.PROJECT_ZONE, manifestPattern: 'manifest.yaml', credentialsId: env.JENK_INT_IT_CRED_ID, verifyDeployments: true])
+		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g manifest-google.yaml"
+                    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.STAGING_CLUSTER, location: env.PROJECT_ZONE, manifestPattern: 'manifest-google.yaml', credentialsId: env.JENK_INT_IT_CRED_ID, verifyDeployments: true])
 			}
         }
 	}
@@ -80,13 +80,10 @@ pipeline {
 		    yamlFile 'gke-deploy-pod.yaml'
 		}
             }
-	    environment {
-                CLOUD = "AWS"
-      	    }
 	    steps{
 		container('gke-deploy') {
-		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g manifest.yaml"
-                    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.PROD_CLUSTER, location: env.PROJECT_ZONE, manifestPattern: 'manifest.yaml', credentialsId: env.JENK_INT_IT_CRED_ID, verifyDeployments: true])
+		    sh "sed -i s#IMAGE#${GCR_IMAGE}#g manifest-aws.yaml"
+                    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.PROD_CLUSTER, location: env.PROJECT_ZONE, manifestPattern: 'manifest-aws.yaml', credentialsId: env.JENK_INT_IT_CRED_ID, verifyDeployments: true])
 			}
         }
 	}
