@@ -18,6 +18,6 @@ spec:
         image: IMAGE
         env:
         - name: CLOUD
-          value: "Google Cloud Platform"
+          value: "Azure"
         ports:
         - containerPort: 80
